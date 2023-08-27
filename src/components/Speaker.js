@@ -59,7 +59,7 @@ function SpeakerImage({ id, first, last }) {
     );
   }
 
-  function Speaker({ speaker }) {
+  function Speaker({ speaker, showSession }) {
     const { id, first, last, sessions } = speaker;
     return (
       <div className="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-sm-12 col-xs-12">
@@ -67,7 +67,7 @@ function SpeakerImage({ id, first, last }) {
           <SpeakerImage id={id} first={first} last={last} />
           <SpeakerDemographics {...speaker} />
         </div>
-        <Sessions sessions={sessions} />
+        {showSession === true ? <Sessions sessions={sessions} /> : null}
       </div>
     );
   }
