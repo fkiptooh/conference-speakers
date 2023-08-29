@@ -35,11 +35,14 @@ export function SpeakersList({ showSession }) {
                 key={speaker.id}
                 speaker={speaker}
                 showSession={showSession}
-                onFavoriteToggle={() => {
-                  updateRecord({
-                    ...speaker,
-                    favorite: !speaker.favorite,
-                  });
+                onFavoriteToggle={(doneCallback) => {
+                  updateRecord(
+                    {
+                      ...speaker,
+                      favorite: !speaker.favorite,
+                    },
+                    doneCallback
+                  );
                 }}
               />
             );

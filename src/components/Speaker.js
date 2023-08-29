@@ -6,10 +6,15 @@ function Session({ title, room }) {
   );
 }
 
+
+const doneCallback = () => {
+  console.log(`SpeakerFavourite donecallback ${new Date().getMilliseconds()}`);
+};
+
 function SpeakerFavorite({ favorite, onFavoriteToggle }) {
   return (
     <div className="action padB1">
-      <span onClick={onFavoriteToggle}>
+      <span onClick={() => onFavoriteToggle(doneCallback)}>
         <i
           className={
             favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
