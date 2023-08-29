@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 function Session({ title, room }) {
   return (
     <span className="session w-100">
@@ -6,21 +8,31 @@ function Session({ title, room }) {
   );
 }
 
-
-const doneCallback = () => {
-  console.log(`SpeakerFavourite donecallback ${new Date().getMilliseconds()}`);
-};
-
 function SpeakerFavorite({ favorite, onFavoriteToggle }) {
+  const [inTransition, setInTransition] = useState(false);
+  const doneCallback = () => {
+    setInTransition(false);
+    console.log(
+      `SpeakerFavourite donecallback ${new Date().getMilliseconds()}`
+    );
+  };
   return (
     <div className="action padB1">
-      <span onClick={() => onFavoriteToggle(doneCallback)}>
+      <span
+        onClick={() => {
+          setInTransition(true);
+          onFavoriteToggle(doneCallback);
+        }}
+      >
         <i
           className={
             favorite === true ? "fa fa-star orange" : "fa fa-star-o orange"
           }
         />{" "}
         Favourite
+        {inTransition ? (
+          <span className="fas fa-circle-notch fa-spin"></span>
+        ) : null}
       </span>
     </div>
   );
@@ -97,4 +109,4 @@ function Speaker({ speaker, showSession, onFavoriteToggle }) {
   );
 }
 
-  export default Speaker;
+export default Speaker;
