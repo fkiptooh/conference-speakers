@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ThemeContext, ThemeProvider } from "../contexts/ThemeProvider";
+import { ThemeContext, ThemeProvider } from "../contexts/ThemeContext";
 
 export const Layout = ({ startingTheme, children }) => {
   return (
